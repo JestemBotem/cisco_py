@@ -1,0 +1,5 @@
+requests==2.27.1
+responses==0.20.0
+fastapi==0.75.1
+uvicorn==0.17.6
+pyyaml==6.0
