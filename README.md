@@ -62,3 +62,51 @@ Response:
 ```
 {"payload":null}
 ```
+
+
+## Schema
+
+Request
+```
+curl --location --request GET 'http://localhost:8000/schema' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "url": "https://example.com"
+}'
+```
+
+Response
+```
+info:
+  title: Example API
+  version: '1.0'
+openapi: 3.0.0
+paths:
+  /info:
+    get:
+      responses:
+        200:
+          description: Static content
+  /ping:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                url:
+                  type: string
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  payload:
+                    type: string
+                type: object
+          description: Payload of given site
+        400:
+          description: Invalid param error
+```
